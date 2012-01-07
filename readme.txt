@@ -12,7 +12,7 @@ Adds Facebook OpenGraph and Schema.Org compatible microdata to header to help se
 
 A lightweight plugin to add Facebook Opengraph and Schema.org microdata in the <head> section of your blog. The Facebook Opengraph and Schema.org microdata lets you optimize your blog much more better and helps search engines to index your website better to show rich snippet.
 
-This plugin also let Facebook and Twitter users to share your blog with proper title, description, url and image.
+This plugin also let Facebook, Google+ and Twitter users to share your blog with proper title, description, url and image.
 
 * The post title as Facebook Share/Like title and Microdata title.
 
@@ -22,7 +22,7 @@ This plugin also let Facebook and Twitter users to share your blog with proper t
 
 * The Post URL as the Facebook Share/Like URL. Doesn't matter if you have pretty permalinks on. This also applies to Microdata.
 
-Here is a live demo on my <a href="http://www.itsabhik.com/wp-plugins/opengraph-microdata-generator.html">Plugin Homepage</a>. If you are find my plugins useful, add me in your circles on <a href="https://plus.google.com/106671843900352433725?rel=author">Google +</a>.
+Here is a live demo on my <a href="http://www.itsabhik.com/wp-plugins/opengraph-microdata-generator.html">Plugin Homepage</a>. If you find my plugins useful, add me in your circles on <a href="https://plus.google.com/106671843900352433725?rel=author">Google +</a>.
 
 == Installation ==
 

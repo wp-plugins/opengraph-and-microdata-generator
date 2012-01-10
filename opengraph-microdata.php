@@ -2,8 +2,8 @@
 /*
 Plugin Name: Opengraph and Microdata Generator
 Plugin URI: http://www.itsabhik.com/wp-plugins/opengraph-microdata-generator.html
-Description: WprdPress Plugin for Facebook Opengraph and Google Schema
-Version: 1.0
+Description: Adds Facebook OpenGraph and Schema.Org compatible microdata at <head> section to help search engines to show rich snippet and index your blog far more better.
+Version: 1.1
 Author: Abhik
 Author URI: http://www.itsabhik.com/
 License: GPL3
@@ -37,7 +37,7 @@ function iafbschema() {
 			$iafbschemameta[]=get_permalink();
 			$iafbschemameta[]=iafbschema_image();
 			$iafbschemameta[]=get_option('blogname');
-			$iafbschemameta[]= substr(strip_tags(get_the_content()), 0, 250)." ..." ;
+			$iafbschemameta[]= substr(strip_tags(get_the_content()), 0, 200)." ..." ;
 		endwhile; endif; 
 	}else{
 		$iafbschemameta[]=get_option('blogname');
@@ -69,8 +69,6 @@ function metas($iafbschemameta){
 	$iametainfo.='<meta itemprop="name" content="'.$iafbschemameta[0].'">';
 	$iametainfo.="\n";
 	$iametainfo.='<meta itemprop="description" content="'.$iafbschemameta[4].'">';
-	$iametainfo.="\n";
-	$iametainfo.='<meta itemprop="image" content="'.$iafbschemameta[2].'">';
 	$iametainfo.="\n";
 	$iametainfo.='<meta itemprop="url" content="'.$iafbschemameta[1].'">';
 	$iametainfo.="\n";

@@ -4,7 +4,7 @@ Donate link: http://www.itsabhik.com/partners/advertise-on-itsabhik/
 Tags: facebook, opengraph, open graph, schema, schema microdata, microdata, seo, optimization, optimizer
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 2.0
+Stable tag: 1.1
 
 Adds Facebook OpenGraph and Schema.Org compatible microdata to header to help search engines to show rich snippet and index your blog far more better.
 
@@ -51,6 +51,9 @@ Check your page source and see the tags at <head> section.
 
 = 1.0 =
 * Intro Version
+
+= 1.1 =
+* Fixed a minor conflict between OG Image and Microdata Image.
 
 == Upgrade Notice ==
 * Follow the Standard Procedure

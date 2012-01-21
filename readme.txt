@@ -4,7 +4,7 @@ Donate link: http://www.itsabhik.com/partners/advertise-on-itsabhik/
 Tags: facebook, opengraph, open graph, schema, schema microdata, microdata, seo, optimization, optimizer
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 1.1
+Stable tag: 2.0
 
 Adds Facebook OpenGraph and Schema.Org compatible microdata to header to help search engines to show rich snippet and index your blog far more better.
 
@@ -31,7 +31,7 @@ Installing and customizing is easy, just follow these simple steps:
 1. Upload 'opengraph-microdata-generator' folder and all it's contents to the '/wp-content/plugins/' directory.
 1. Activate the plugin 'Opengraph and Microdata Generator' through the 'Plugins' menu in WordPress
 1. **Important:** Add this line manually `itemscope itemtype="http://schema.org/Blog"` to your theme's <html> tag in header.php so that it looks something like `<html itemscope itemtype="http://schema.org/Blog" ... />`. This has to done manually as there are no automated way.
-1. Change the default thumbnail to your own. Just replace the 'thumbnail.png' in plugin 'images' folder.
+1. Change settings at Settings > OpenGraph/Microdata page. Fill in your Facebook Admin ID, Default thumbnail URL and Blog Language.
 
 == Frequently Asked Questions ==
 
@@ -46,6 +46,7 @@ Check your page source and see the tags at <head> section.
 == Screenshots ==
 
 1. Sample Output from the plugin
+2. Settings Page
 
 == Changelog ==
 
@@ -54,6 +55,11 @@ Check your page source and see the tags at <head> section.
 
 = 1.1 =
 * Fixed a minor conflict between OG Image and Microdata Image.
+
+= 2.0 =
+* Added Options page at under Dashboard > Settings > OpenGraph/MicroData.
+* Added ability to add your own default thumbnail.
+* Two new Opengraph property added.
 
 == Upgrade Notice ==
 * Follow the Standard Procedure

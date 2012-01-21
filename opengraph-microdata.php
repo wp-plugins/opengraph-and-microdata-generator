@@ -235,8 +235,6 @@ function metas($iafbschemameta){
 	$iametainfo.="\n";
 	$iametainfo.='<meta property="og:title" content="'.$iafbschemameta[title].'" />';
 	$iametainfo.="\n";
-	$iametainfo.='<meta property="og:type" content="blog" />';
-	$iametainfo.="\n";
 	$iametainfo.='<meta property="og:url" content="'.$iafbschemameta[permalink].'" />';
 	$iametainfo.="\n";
 	$iametainfo.='<meta property="og:image" content="'.$iafbschemameta[image].'" />';

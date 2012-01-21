@@ -3,7 +3,7 @@
 Plugin Name: Opengraph and Microdata Generator
 Plugin URI: http://www.itsabhik.com/wp-plugins/opengraph-microdata-generator.html
 Description: Adds Facebook OpenGraph and Schema.Org compatible microdata at <head> section to help search engines to show rich snippet and index your blog far more better.
-Version: 2.0
+Version: 2.1
 Author: Abhik
 Author URI: http://www.itsabhik.com/
 License: GPL3
@@ -234,6 +234,8 @@ function metas($iafbschemameta){
 	$iametainfo.="<!-- ItsAbhik.com Facebook OpenGraph and Schema Microdata Generator Start -->";
 	$iametainfo.="\n";
 	$iametainfo.='<meta property="og:title" content="'.$iafbschemameta[title].'" />';
+	$iametainfo.="\n";
+	$iametainfo.='<meta property="og:type" content="article" />';
 	$iametainfo.="\n";
 	$iametainfo.='<meta property="og:url" content="'.$iafbschemameta[permalink].'" />';
 	$iametainfo.="\n";

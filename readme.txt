@@ -4,7 +4,7 @@ Donate link: http://www.itsabhik.com/partners/advertise-on-itsabhik/
 Tags: facebook, opengraph, open graph, schema, schema microdata, microdata, seo, optimization, optimizer
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 2.0
+Stable tag: 2.1
 
 Adds Facebook OpenGraph and Schema.Org compatible microdata to header to help search engines to show rich snippet and index your blog far more better.
 
@@ -60,6 +60,9 @@ Check your page source and see the tags at <head> section.
 * Added Options page at under Dashboard > Settings > OpenGraph/MicroData.
 * Added ability to add your own default thumbnail.
 * Two new Opengraph property added.
+
+= 2.1 =
+* Fixed a small bug with Facebook Debugger
 
 == Upgrade Notice ==
 * Follow the Standard Procedure

@@ -4,7 +4,7 @@ Donate link: http://www.itsabhik.com/partners/advertise-on-itsabhik/
 Tags: facebook, opengraph, open graph, schema, schema microdata, microdata, seo, optimization, optimizer
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 2.1
+Stable tag: 2.2
 
 Adds Facebook OpenGraph and Schema.Org compatible microdata to header to help search engines to show rich snippet and index your blog far more better.
 
@@ -24,6 +24,9 @@ This plugin also let Facebook, Google+ and Twitter users to share your blog with
 
 Here is a live demo on my <a href="http://www.itsabhik.com/wp-plugins/opengraph-microdata-generator.html">Plugin Homepage</a>. If you find my plugins useful, add me in your circles on <a href="https://plus.google.com/106671843900352433725?rel=author">Google +</a>.
 
+If you like the plugin, please vote a 5 Star. ===>>
+Thanks
+
 == Installation ==
 
 Installing and customizing is easy, just follow these simple steps:
@@ -31,13 +34,9 @@ Installing and customizing is easy, just follow these simple steps:
 1. Upload 'opengraph-microdata-generator' folder and all it's contents to the '/wp-content/plugins/' directory.
 1. Activate the plugin 'Opengraph and Microdata Generator' through the 'Plugins' menu in WordPress
 1. **Important:** Add this line manually `itemscope itemtype="http://schema.org/Blog"` to your theme's <html> tag in header.php so that it looks something like `<html itemscope itemtype="http://schema.org/Blog" ... />`. This has to done manually as there are no automated way.
-1. Change settings at Settings > OpenGraph/Microdata page. Fill in your Facebook Admin ID, Default thumbnail URL and Blog Language.
+1. Change settings at Settings > OpenGraph/Microdata page. Fill in your Facebook Admin ID, Default thumbnail URL, Blog Language and desired word length for desctiption.
 
 == Frequently Asked Questions ==
-
-= Why I can't see any Options Page =
-
-It's not yet added. I have plans to add custom values in future releases.
 
 = How do I check if the plugin is working? =
 
@@ -63,6 +62,10 @@ Check your page source and see the tags at <head> section.
 
 = 2.1 =
 * Fixed a small bug with Facebook Debugger
+
+= 2.2 =
+* Fixed issues with quotes and doublequotes which were breaking the meta tag.
+* Added setting to have your own word length in description.
 
 == Upgrade Notice ==
 * Follow the Standard Procedure

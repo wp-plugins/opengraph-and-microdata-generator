@@ -3,7 +3,7 @@
 Plugin Name: Opengraph and Microdata Generator
 Plugin URI: http://www.itsabhik.com/wp-plugins/opengraph-microdata-generator.html
 Description: Adds Facebook OpenGraph and Schema.Org compatible microdata at <head> section to help search engines to show rich snippet and index your blog far more better.
-Version: 2.1
+Version: 2.2
 Author: Abhik
 Author URI: http://www.itsabhik.com/
 License: GPL3
@@ -20,20 +20,19 @@ function wpogmc_admin_init(){
 register_setting( 'wpogmc_settings', 'wpogmcappid' );
 register_setting( 'wpogmc_settings', 'wpogmcthumbnail' );
 register_setting( 'wpogmc_settings', 'wpogmclocale');
+register_setting( 'wpogmc_settings', 'wpogmcwordlimit');
 }
 add_action ('admin_menu', 'ogmd_page');
 add_action('admin_init', 'wpogmc_admin_init');
+add_option('wpogmclocale', 'en_US');
+add_option('wpogmcwordlimit', '25');
 
 function wpogmc_options_page() {
 ?>
 
 <div class="wrap">
-<h2>OpenGraph and Microdata Settings</h2>
-<div style="padding-bottom:10px;">
-</div>
-
 <div style="float:left;width:600px;margin:0 20px 0 10px;">
-
+<img src="<?php echo WP_PLUGIN_URL; ?>/opengraph-and-microdata-generator/images/logo.png" border="0">
 <div class="postbox">
 <h3 class="hndle" style="padding:5px 0 5px 10px;"><span>OpenGraph Settings</span></h3>
 <form method="post" action="options.php">
@@ -135,7 +134,11 @@ function wpogmc_options_page() {
 				</select>
 		</td>
         </tr>
-        
+		
+        <tr valign="top">
+        <th scope="row">Description Word Limit:<br/><span style="font-size:11px;font-style:italic;">(Number of Words you want as description)</span></th>
+        <td><input type="text" name="wpogmcwordlimit" size="2" value="<?php echo get_option('wpogmcwordlimit'); ?>" /></td>
+        </tr>
 
     <tr valign="top">
         <th scope="row"></th>
@@ -148,35 +151,12 @@ function wpogmc_options_page() {
 </table>
 </form>
 </div>
-
-</div>
-<div style="width:300px;float:left;">
-
 <div class="postbox">
-<h3 class="hndle" style="padding:5px 0 5px 10px;"><span>Share This Plugin</span></h3>
-<p style="padding-left:10px"><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://wp.me/p1dK9h-Ha" data-counturl="http://www.itsabhik.com/wp-plugins/opengraph-microdata-generator.html" data-text="Check out the best Facebbok OpenGraph and Microdata plugin for WordPress" data-count="horizontal" data-via="itsabhik" data-related="itsabhik">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></p>
-<p style="padding-left:10px"><iframe src="http://www.facebook.com/plugins/like.php?app_id=166444890101145&amp;href=http%3A%2F%2Fwww.itsabhik.com%2Fwp-plugins%2Fopengraph-microdata-generator.html&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe></p>
-<p style="padding-left:10px"><!-- Place this tag where you want the +1 button to render -->
-<g:plusone size="medium" href="http://www.itsabhik.com/wp-plugins/opengraph-microdata-generator.html"></g:plusone>
-
-<!-- Place this render call where appropriate -->
-<script type="text/javascript">
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script></p>
+	<h3 class="hndle" style="padding:5px 0 0px 10px;"><span>My Other Free Plugins</span></h3>
+		<p style="padding-left:10px"><a title="Gravatar Hovercard" target="_blank" href="http://www.itsabhik.com/wp-plugins/gravatar-hovercards-wordpress-plugin.html"><strong>Gravatar Hovercards</strong></a> : Fetches the gravatar profile on hovering mouse over any avatar image from Gravatar.<br/><br/>
+		<a title="Advanced Author Bio" target="_blank" href="http://www.itsabhik.com/wp-plugins/gravatar-hovercards-wordpress-plugin.html"><strong>Advanced Author Bio</strong></a> : Shows a author bio box after every blog post with some advanced options.<br/><br/>
+		<a title="WordPress Server Load" target="_blank" href="http://www.itsabhik.com/wp-plugins/wordpress-server-load-plugin.html"><strong>WordPress Server Load</strong></a> : Shows the load averages of the server in a widget at admin dashboard.</p>
 </div>
-
-<div class="postbox">
-<h3 class="hndle" style="padding:5px 0 0px 10px;"><span>My Other Plugins</span></h3>
-<p style="padding-left:10px"><a title="Gravatar Hovercard" target="_blank" href="http://www.itsabhik.com/wp-plugins/gravatar-hovercards-wordpress-plugin.html">Gravatar Hovercard</a></p>
-<p style="padding-left:10px"><a title="Advanced Author Bio" target="_blank" href="http://www.itsabhik.com/wp-plugins/gravatar-hovercards-wordpress-plugin.html">Advanced Author Bio</a></p>
-<p style="padding-left:10px"><a title="WordPress Server Load" target="_blank" href="http://www.itsabhik.com/wp-plugins/wordpress-server-load-plugin.html">WordPress Server Load</a></p>
-<p style="padding-left:10px"><a title="HTML in Author Bio" target="_blank" href="http://www.itsabhik.com/wp-plugins/allow-html-in-wordpress-author-bio.html">HTML in Author Bio</a></p>
-</div>
-
 </div>
 <div class="clear"></div>
 </div>
@@ -203,6 +183,18 @@ function iafbschema_image()
 		return get_option('wpogmcthumbnail');
     }
 }
+// Let's limit the word count in description
+function wordlength() {
+	$theContent = trim(strip_tags(get_the_content()));
+		$output = str_replace( '"', '', $theContent);
+		$output = str_replace( '\r\n', ' ', $output);
+		$output = str_replace( '\n', ' ', $output);
+			$limit = get_option('wpogmcwordlimit');
+			$content = explode(' ', $output, $limit);
+			array_pop($content);
+		$content = implode(" ",$content)."...";
+	return $content;
+}
 // Then the required fields for Facebook OPengraph and Schema Microdata.
 function iafbschema() {
 	if(is_single() ){
@@ -211,19 +203,18 @@ function iafbschema() {
 			$iafbschemameta[permalink]=get_permalink();
 			$iafbschemameta[image]=iafbschema_image();
 			$iafbschemameta[blogname]=get_option('blogname');
-			$iafbschemameta[description]= substr(strip_tags(get_the_content()), 0, 200)." ..." ;
+			$iafbschemameta[description]= wordlength();
 			$iafbschemameta[language]=get_option('wpogmclocale');
 			$iafbschemameta[appid]=get_option('wpogmcappid');
-			
-		endwhile; endif; 
-	}else{
-		$iafbschemameta[blogname]=get_option('blogname');
-		$iafbschemameta[permalink]=get_option('siteurl');
-		$iafbschemameta[image]=iafbschema_image();
-		$iafbschemameta[title]=get_option('blogname');
-		$iafbschemameta[description]=get_option('blogdescription');
-		$iafbschemameta[language]=get_option('wpogmclocale');
-		$iafbschemameta[appid]=get_option('wpogmcappid');
+			endwhile; endif; 
+		}else{
+			$iafbschemameta[blogname]=get_option('blogname');
+			$iafbschemameta[permalink]=get_option('siteurl');
+			$iafbschemameta[image]=iafbschema_image();
+			$iafbschemameta[title]=get_option('blogname');
+			$iafbschemameta[description]=get_option('blogdescription');
+			$iafbschemameta[language]=get_option('wpogmclocale');
+			$iafbschemameta[appid]=get_option('wpogmcappid');
 	}
 	
 	echo metas($iafbschemameta);

@@ -22,7 +22,7 @@ This plugin also let Facebook, Google+ and Twitter users to share your blog with
 
 * The Post URL as the Facebook Share/Like URL. Doesn't matter if you have pretty permalinks on. This also applies to Microdata.
 
-Here is a live demo on my <a href="http://www.itsabhik.com/opengraph-microdata-generator/">Plugin Homepage</a>. If you find my plugins useful, add me in your circles on <a href="https://plus.google.com/106671843900352433725?rel=author">Google +</a>. Don't forget to check mt blog <a href="http://www.itsabhik.com">ItsABhikDotCom</a>.
+Here is a live demo on my <a href="http://www.itsabhik.com/opengraph-microdata-generator/">Plugin Homepage</a>. If you find my plugins useful, add me in your circles on <a href="https://plus.google.com/106671843900352433725?rel=author">Google +</a>. Don't forget to check my blog <a href="http://www.itsabhik.com">ItsAbhikDotCom</a>.
 
 If you like the plugin, please vote a 5 Star. ===>>
 Thanks

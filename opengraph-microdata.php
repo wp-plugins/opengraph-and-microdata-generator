@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Opengraph and Microdata Generator
-Plugin URI: http://www.itsabhik.com/wp-plugins/opengraph-microdata-generator.html
+Plugin URI: http://www.itsabhik.com/opengraph-microdata-generator/
 Description: Adds Facebook OpenGraph and Schema.Org compatible microdata at <head> section to help search engines to show rich snippet and index your blog far more better.
-Version: 2.2
+Version: 3.0
 Author: Abhik
 Author URI: http://www.itsabhik.com/
 License: GPL3
@@ -193,21 +193,29 @@ function wordlength() {
 			$content = explode(' ', $output, $limit);
 			array_pop($content);
 		$content = implode(" ",$content)."...";
-	return $content;
+	return strip_tags($content);
 }
-// Then the required fields for Facebook OPengraph and Schema Microdata.
+// Then the required fields for Facebook Opengraph.
 function iafbschema() {
-	if(is_single() ){
+	if(is_single() || is_page() ){
 		if (have_posts()) : while (have_posts()) : the_post(); 
-			$iafbschemameta[title]=get_the_title($post->post_title);
-			$iafbschemameta[permalink]=get_permalink();
+			$title = get_the_title($post->post_title);
+			$permalink = get_permalink($post->ID);
+		endwhile; endif;
+			$iafbschemameta[title] = $title;
+			$iafbschemameta[permalink] = $permalink;
 			$iafbschemameta[image]=iafbschema_image();
 			$iafbschemameta[blogname]=get_option('blogname');
 			$iafbschemameta[description]= wordlength();
 			$iafbschemameta[language]=get_option('wpogmclocale');
 			$iafbschemameta[appid]=get_option('wpogmcappid');
-			endwhile; endif; 
-		}else{
+			
+	} elseif (is_author()) {
+			$user_email = get_the_author_meta('user_email');
+			$authorimage = 'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $user_email ) ) );
+			$iafbschemameta[image]=$authorimage;
+	
+	}else{
 			$iafbschemameta[blogname]=get_option('blogname');
 			$iafbschemameta[permalink]=get_option('siteurl');
 			$iafbschemameta[image]=iafbschema_image();
@@ -241,10 +249,6 @@ function metas($iafbschemameta){
 	$iametainfo.='<meta property="fb:admins" content="'.$iafbschemameta[appid].'" />';
 	$iametainfo.="\n";
 	$iametainfo.='<meta itemprop="name" content="'.$iafbschemameta[title].'">';
-	$iametainfo.="\n";
-	$iametainfo.='<meta itemprop="description" content="'.$iafbschemameta[description].'">';
-	$iametainfo.="\n";
-	$iametainfo.='<meta itemprop="url" content="'.$iafbschemameta[permalink].'">';
 	$iametainfo.="\n";
 	$iametainfo.='<!-- ItsAbhik.com Facebook OpenGraph and Schema Microdata Generator End -->';
 	$iametainfo.="\n";

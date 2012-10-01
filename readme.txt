@@ -1,10 +1,10 @@
 === Opengraph and Microdata Generator ===
 Contributors: itsabhik
-Donate link: http://www.itsabhik.com/partners/advertise-on-itsabhik/
+Donate link: http://www.itsabhik.com/advertise-on-itsabhik/
 Tags: facebook, opengraph, open graph, schema, schema microdata, microdata, seo, optimization, optimizer
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 2.2
+Stable tag: 3.0
 
 Adds Facebook OpenGraph and Schema.Org compatible microdata to header to help search engines to show rich snippet and index your blog far more better.
 
@@ -22,7 +22,7 @@ This plugin also let Facebook, Google+ and Twitter users to share your blog with
 
 * The Post URL as the Facebook Share/Like URL. Doesn't matter if you have pretty permalinks on. This also applies to Microdata.
 
-Here is a live demo on my <a href="http://www.itsabhik.com/wp-plugins/opengraph-microdata-generator.html">Plugin Homepage</a>. If you find my plugins useful, add me in your circles on <a href="https://plus.google.com/106671843900352433725?rel=author">Google +</a>.
+Here is a live demo on my <a href="http://www.itsabhik.com/opengraph-microdata-generator/">Plugin Homepage</a>. If you find my plugins useful, add me in your circles on <a href="https://plus.google.com/106671843900352433725?rel=author">Google +</a>. Don't forget to check mt blog <a href="http://www.itsabhik.com">ItsABhikDotCom</a>.
 
 If you like the plugin, please vote a 5 Star. ===>>
 Thanks
@@ -33,7 +33,6 @@ Installing and customizing is easy, just follow these simple steps:
 
 1. Upload 'opengraph-microdata-generator' folder and all it's contents to the '/wp-content/plugins/' directory.
 1. Activate the plugin 'Opengraph and Microdata Generator' through the 'Plugins' menu in WordPress
-1. **Important:** Add this line manually `itemscope itemtype="http://schema.org/Blog"` to your theme's <html> tag in header.php so that it looks something like `<html itemscope itemtype="http://schema.org/Blog" ... />`. This has to done manually as there are no automated way.
 1. Change settings at Settings > OpenGraph/Microdata page. Fill in your Facebook Admin ID, Default thumbnail URL, Blog Language and desired word length for desctiption.
 
 == Frequently Asked Questions ==
@@ -66,6 +65,11 @@ Check your page source and see the tags at <head> section.
 = 2.2 =
 * Fixed issues with quotes and doublequotes which were breaking the meta tag.
 * Added setting to have your own word length in description.
+
+= 3.0 =
+* No more itemprop as it's no longer necessary for sharing.
+* Added to author pages.
+* Author's gravatar as the share image.
 
 == Upgrade Notice ==
 * Follow the Standard Procedure

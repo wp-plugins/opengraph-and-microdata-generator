@@ -72,7 +72,7 @@ Check your page source and see the tags at <head> section.
 * Author's gravatar as the share image.
 
 = 3.1 =
-* Fixed a bug where default thumbnail was including Blog URL at first.
+* Fixed a bug where blog url were being added if the first image isn't hosted in same server.
 
 == Upgrade Notice ==
 * Follow the Standard Procedure

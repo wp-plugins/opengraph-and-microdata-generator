@@ -3,8 +3,8 @@ Contributors: itsabhik
 Donate link: http://www.itsabhik.com/advertise-on-itsabhik/
 Tags: facebook, opengraph, open graph, schema, schema microdata, microdata, seo, optimization, optimizer
 Requires at least: 3.0
-Tested up to: 3.4
-Stable tag: 3.0
+Tested up to: 3.4.2
+Stable tag: 3.1
 
 Adds Facebook OpenGraph and Schema.Org compatible microdata to header to help search engines to show rich snippet and index your blog far more better.
 
@@ -70,6 +70,9 @@ Check your page source and see the tags at <head> section.
 * No more itemprop as it's no longer necessary for sharing.
 * Added to author pages.
 * Author's gravatar as the share image.
+
+= 3.1 =
+* Fixed a bug where default thumbnail was including Blog URL at first.
 
 == Upgrade Notice ==
 * Follow the Standard Procedure

@@ -3,7 +3,7 @@
 Plugin Name: Opengraph and Microdata Generator
 Plugin URI: http://www.itsabhik.com/opengraph-microdata-generator/
 Description: Adds Facebook OpenGraph and Schema.Org compatible microdata at <head> section to help search engines to show rich snippet and index your blog far more better.
-Version: 3.0
+Version: 3.1
 Author: Abhik
 Author URI: http://www.itsabhik.com/
 License: GPL3
@@ -166,22 +166,17 @@ function wpogmc_options_page() {
 // Let's get the image part first.
 function iafbschema_image()
 {
-    $Html = get_the_content();
-    $extrae = '/<img .*src=["\']([^ ^"^\']*)["\']/';
-		preg_match_all( $extrae  , $Html , $matches );
-	$image = $matches[1][0];
+  global $post, $posts;
+  $image = '';
+  ob_start();
+  ob_end_clean();
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+  $image = $matches[1][0];
 
-    if($image)
-    {
-		$pos = strpos($image, site_url());
-		if ($pos === false) {
-			return $_SERVER['HTTP_HOST'].$image;
-		} else {
-			return $image;
-		}
-    } else {
-		return get_option('wpogmcthumbnail');
-    }
+  if(empty($image)) {
+    $image = get_option('wpogmcthumbnail');
+  }
+  return $image;
 }
 // Let's limit the word count in description
 function wordlength() {

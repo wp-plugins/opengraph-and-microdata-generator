@@ -3,7 +3,7 @@
 Plugin Name: Opengraph and Microdata Generator
 Plugin URI: http://www.itsabhik.com/opengraph-microdata-generator/
 Description: Adds Facebook OpenGraph and Schema.Org compatible microdata at <head> section to help search engines to show rich snippet and index your blog far more better.
-Version: 3.1
+Version: 3.2
 Author: Abhik
 Author URI: http://www.itsabhik.com/
 License: GPL3
@@ -18,6 +18,7 @@ function ogmd_page () {
 
 function wpogmc_admin_init(){
 register_setting( 'wpogmc_settings', 'wpogmcappid' );
+register_setting( 'wpogmc_settings', 'wpogmcadminid' );
 register_setting( 'wpogmc_settings', 'wpogmcthumbnail' );
 register_setting( 'wpogmc_settings', 'wpogmclocale');
 register_setting( 'wpogmc_settings', 'wpogmcwordlimit');
@@ -40,8 +41,13 @@ function wpogmc_options_page() {
     <?php do_settings_sections( 'wpogmc_settings' ); ?>
     <table class="form-table">
         <tr valign="top">
-        <th scope="row">Facebook App ID/Admin ID:</th>
+        <th scope="row">Facebook App ID<br/><span style="font-size:11px;font-style:italic;">(Leave Blank if Unsure)</span></th>
         <td><input type="text" name="wpogmcappid" size="30" value="<?php echo get_option('wpogmcappid'); ?>" /></td>
+		</tr>
+		
+		<tr valign="top">
+        <th scope="row">Facebook Admin ID</th>
+        <td><input type="text" name="wpogmcadminid" size="30" value="<?php echo get_option('wpogmcadminid'); ?>" /></td>
 		</tr>
          
         <tr valign="top">
@@ -146,7 +152,7 @@ function wpogmc_options_page() {
 	</tr>
 		<tr valign="top">
 		<th scope="row"></th>
-		<td style="font-size:11px;font-style:italic;">Know your AppID/AdminID <a href="http://graph.facebook.com/YourUsername" rel="nofollow" target="_blank">here</a>. Replace <strong>YourUsername</strong> with Your Username</td>
+		<td style="font-size:11px;font-style:italic;">Know your Admin ID <a href="http://graph.facebook.com/YourUsername" rel="nofollow" target="_blank">here</a>. Replace <strong>YourUsername</strong> with Your Username</td>
 		</tr>
 </table>
 </form>
@@ -164,26 +170,39 @@ function wpogmc_options_page() {
 <?php
 }
 // Let's get the image part first.
-function iafbschema_image()
-{
+function iafbschema_image() {
   global $post, $posts;
+	// Lets Look for Thesis Post Image First
+	if (get_post_custom_values("thesis_post_image") !='') { // if post image exists, return it
+	
+	$thumb = get_post_custom_values("thesis_post_image");
+	return $thumb[0];
+	// If No Thesis Post Image, Lets get the Uploaded Image
+	} elseif (has_post_thumbnail()){
+		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );
+		return $thumb[0];
+	
+	} else { // If no Uploaded image found, let's check if there are any external image in post.
+	
   $image = '';
   ob_start();
   ob_end_clean();
   $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
   $image = $matches[1][0];
 
-  if(empty($image)) {
+  if(empty($image)) { // If all fails, use the Default Image URL we set at the settings page
     $image = get_option('wpogmcthumbnail');
+  }
   }
   return $image;
 }
+
 // Let's limit the word count in description
 function wordlength() {
 	$theContent = trim(strip_tags(get_the_content()));
-		$output = str_replace( '"', '', $theContent);
-		$output = str_replace( '\r\n', ' ', $output);
-		$output = str_replace( '\n', ' ', $output);
+		$search = array('\r\n', '\n', '\r', '"', '<', '>', "'");
+		$replace = array(' ', ' ', ' ', '', '', '', '');
+		$output = str_replace( $search, $replace, $theContent);
 			$limit = get_option('wpogmcwordlimit');
 			$content = explode(' ', $output, $limit);
 			array_pop($content);
@@ -204,6 +223,8 @@ function iafbschema() {
 			$iafbschemameta[description]= wordlength();
 			$iafbschemameta[language]=get_option('wpogmclocale');
 			$iafbschemameta[appid]=get_option('wpogmcappid');
+			$iafbschemameta[adminid]=get_option('wpogmcadminid');
+			
 			
 	} elseif (is_author()) {
 			$user_email = get_the_author_meta('user_email');
@@ -218,6 +239,7 @@ function iafbschema() {
 			$iafbschemameta[description]=get_option('blogdescription');
 			$iafbschemameta[language]=get_option('wpogmclocale');
 			$iafbschemameta[appid]=get_option('wpogmcappid');
+			$iafbschemameta[adminid]=get_option('wpogmcadminid');
 	}
 	
 	echo metas($iafbschemameta);
@@ -241,7 +263,9 @@ function metas($iafbschemameta){
 	$iametainfo.="\n";
 	$iametainfo.='<meta property="og:locale" content="'.$iafbschemameta[language].'" />';
 	$iametainfo.="\n";
-	$iametainfo.='<meta property="fb:admins" content="'.$iafbschemameta[appid].'" />';
+	$iametainfo.='<meta property="fb:admins" content="'.$iafbschemameta[adminid].'" />';
+	$iametainfo.="\n";
+	$iametainfo.='<meta property="fb:app_id" content="'.$iafbschemameta[appid].'" />';
 	$iametainfo.="\n";
 	$iametainfo.='<meta itemprop="name" content="'.$iafbschemameta[title].'">';
 	$iametainfo.="\n";

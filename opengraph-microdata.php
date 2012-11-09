@@ -9,6 +9,9 @@ Author URI: http://www.itsabhik.com/
 License: GPL3
 */
 
+// Remove the JetPack Opengraph
+remove_action( 'wp_head', 'jetpack_og_tags' );
+
 // add the admin options page
 function ogmd_page () {
     if (function_exists ('add_submenu_page'))

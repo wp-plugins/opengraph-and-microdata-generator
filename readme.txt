@@ -4,7 +4,7 @@ Donate link: http://www.itsabhik.com/advertise-on-itsabhik/
 Tags: facebook, opengraph, open graph, schema, schema microdata, microdata, seo, optimization, optimizer
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 3.2
+Stable tag: 3.3
 
 Adds Facebook OpenGraph and Schema.Org compatible microdata to header to help search engines to show rich snippet and index your blog far more better.
 
@@ -72,7 +72,7 @@ Check your page source and see the tags at <head> section.
 * Author's gravatar as the share image.
 
 = 3.1 =
-* Fixed a bug where blog url were being added if the first image isn't hosted in same server.= 3.2 =* Added support for Thesis Post Images and WordPress Featured Images
+* Fixed a bug where blog url were being added if the first image isn't hosted in same server.= 3.2 =* Added support for Thesis Post Images and WordPress Featured Images= 3.3 =* Fixed the Conflict with JetPack OG Tags
 
 == Upgrade Notice ==
 * Follow the Standard Procedure

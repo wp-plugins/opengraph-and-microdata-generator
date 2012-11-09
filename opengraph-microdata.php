@@ -3,7 +3,7 @@
 Plugin Name: Opengraph and Microdata Generator
 Plugin URI: http://www.itsabhik.com/opengraph-microdata-generator/
 Description: Adds Facebook OpenGraph and Schema.Org compatible microdata at <head> section to help search engines to show rich snippet and index your blog far more better.
-Version: 3.2
+Version: 3.3
 Author: Abhik
 Author URI: http://www.itsabhik.com/
 License: GPL3

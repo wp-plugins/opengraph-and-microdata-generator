@@ -4,25 +4,23 @@ Donate link: http://www.itsabhik.com/advertise-on-itsabhik/
 Tags: facebook, opengraph, open graph, schema, schema microdata, microdata, seo, optimization, optimizer
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 3.3
+Stable tag: 3.4
 
-Adds Facebook OpenGraph and Schema.Org compatible microdata to header to help search engines to show rich snippet and index your blog far more better.
+Adds Facebook OpenGraph Meta Tags to head for a better social sharing experience.
 
 == Description ==
 
-A lightweight plugin to add Facebook Opengraph and Schema.org microdata in the <head> section of your blog. The Facebook Opengraph and Schema.org microdata lets you optimize your blog much more better and helps search engines to index your website better to show rich snippet.
+A lightweight plugin to add Facebook Opengraph in the <head> section of your blog. The Facebook Opengraph lets yor visitors share your content with proper Title, Description and Thumbnail Image.
 
-This plugin also let Facebook, Google+ and Twitter users to share your blog with proper title, description, url and image.
+* The Post Title as OpenGraph Title
 
-* The post title as Facebook Share/Like title and Microdata title.
+* The first image uploaded/found in the post as the Facebook thumbnail. Ability to define default thumbnail if no image is found on the post.
 
-* The first image found in the post as the Facebook Share/Like thumbnail. Ability to define default thumbnail if no image is found on the post. This also applies for Microdata.
+* Custom Excerpt for the Facebook Share/Like description. Brings the first 25 words of the blog post if no custom excerpt is found.
 
-* Custom excerpt as the Facebook Share/Like description. Brings the first 250 characters of the blog post if no custom excerpt is found. This also applies for Microdata.
+* The Post URL as the Facebook Share/Like URL. Doesn't matter if you have pretty permalinks on.
 
-* The Post URL as the Facebook Share/Like URL. Doesn't matter if you have pretty permalinks on. This also applies to Microdata.
-
-Here is a live demo on my <a href="http://www.itsabhik.com/opengraph-microdata-generator/">Plugin Homepage</a>. If you find my plugins useful, add me in your circles on <a href="https://plus.google.com/106671843900352433725?rel=author">Google +</a>. Don't forget to check my blog <a href="http://www.itsabhik.com">ItsAbhikDotCom</a>.
+Here is a live demo on my <a href="http://www.itsabhik.com/wordpress-opengraph-plugin/">WordPress Opengraph Plugin</a> Homepage. If you find my plugins useful, add me in your circles on <a href="https://plus.google.com/106671843900352433725?rel=author">Google +</a>. Don't forget to check my blog <a href="http://www.itsabhik.com">ItsAbhikDotCom</a>.
 
 If you like the plugin, please vote a 5 Star. ===>>
 Thanks
@@ -33,7 +31,7 @@ Installing and customizing is easy, just follow these simple steps:
 
 1. Upload 'opengraph-microdata-generator' folder and all it's contents to the '/wp-content/plugins/' directory.
 1. Activate the plugin 'Opengraph and Microdata Generator' through the 'Plugins' menu in WordPress
-1. Change settings at Settings > OpenGraph/Microdata page. Fill in your Facebook Admin ID, Default thumbnail URL, Blog Language and desired word length for desctiption.
+1. Change settings at Settings > OpenGraph page. Fill in your Facebook Admin ID, Default thumbnail URL, Blog Language and desired word length for desctiption.
 
 == Frequently Asked Questions ==
 
@@ -72,7 +70,7 @@ Check your page source and see the tags at <head> section.
 * Author's gravatar as the share image.
 
 = 3.1 =
-* Fixed a bug where blog url were being added if the first image isn't hosted in same server.= 3.2 =* Added support for Thesis Post Images and WordPress Featured Images= 3.3 =* Fixed the Conflict with JetPack OG Tags
+* Fixed a bug where blog url were being added if the first image isn't hosted in same server.= 3.2 =* Added support for Thesis Post Images and WordPress Featured Images= 3.3 =* Fixed the Conflict with JetPack OG Tags= 3.4 =* Fixed a minor bug
 
 == Upgrade Notice ==
 * Follow the Standard Procedure

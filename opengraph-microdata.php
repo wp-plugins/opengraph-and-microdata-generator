@@ -3,7 +3,7 @@
 Plugin Name: Opengraph and Microdata Generator
 Plugin URI: http://www.itsabhik.com/opengraph-microdata-generator/
 Description: Adds Facebook OpenGraph and Schema.Org compatible microdata at <head> section to help search engines to show rich snippet and index your blog far more better.
-Version: 3.3
+Version: 3.4
 Author: Abhik
 Author URI: http://www.itsabhik.com/
 License: GPL3
@@ -15,8 +15,8 @@ remove_action( 'wp_head', 'jetpack_og_tags' );
 // add the admin options page
 function ogmd_page () {
     if (function_exists ('add_submenu_page'))
-        add_submenu_page ('options-general.php', __('Opengraph and Microdata Generator Settings'), __('OpenGraph/MicroData'),
-            'manage_options', 'ogmd-settings', 'wpogmc_options_page');
+        add_submenu_page ('options-general.php', __('Opengraph Settings'), __('OpenGraph'),
+            'manage_options', 'og-settings', 'wpogmc_options_page');
 }
 
 function wpogmc_admin_init(){
